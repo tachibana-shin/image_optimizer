@@ -21,6 +21,14 @@ Compared to other plugins like [*Bulk Image Resizer*](https://github.com/akupiec
 - **Non-Destructive**: Creates a new book entry with the optimized files, keeping your originals safe.
 - **Multilingual**: Supports English, Vietnamese, and Japanese.
 
+## Preview
+
+- File number 1 is optimized for full HD with configuration `size=1080, quality=85`
+- File number 2 is optimized for Kindle with configuration `size=400, quality=85`
+- File number 3 is the original file
+<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/da7e7405-b571-4ae3-8a48-07431d51b15f" />
+
+
 ## Installation
 
 1. Download the `image_optimizer.zip` release.
