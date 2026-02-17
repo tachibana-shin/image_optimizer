@@ -7,7 +7,7 @@ translate:
 	pybabel compile -i translations/vi.po -o translations/vi.mo
 	pybabel compile -i translations/ja.po -o translations/ja.mo
 
-image_optimizer.zip: builder/build.py __init__.py main.py optimizer.py config_dialog.py builder/plugin-import-name-image_optimizer.txt
+image_optimizer.zip: clean
 	python builder/build.py
 
 load:

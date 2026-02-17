@@ -1,5 +1,6 @@
 import re
 import datetime
+import os
 
 def extract_messages(files):
     messages = []
@@ -56,6 +57,17 @@ msgstr ""
     print(f"Created {output_file} with {len(unique_msgs)} messages.")
 
 if __name__ == "__main__":
-    files = ['main.py', 'config_dialog.py', 'optimizer.py', '__init__.py']
-    msgs = extract_messages(files)
-    create_pot_file(msgs, 'translations/messages.pot')
+    files = []
+    exclude_dirs = {'__pycache__', 'builder', '.git', '.qodo', '.idea', '.vscode'}
+    for root, dirs, filenames in os.walk('.'):
+        dirs[:] = [d for d in dirs if d not in exclude_dirs]
+        for filename in filenames:
+            if filename.endswith('.py'):
+                files.append(os.path.join(root, filename))
+
+    if not files:
+        print("No python files found.")
+    else:
+        print(f"Scanning {len(files)} files...")
+        msgs = extract_messages(files)
+        create_pot_file(msgs, 'translations/messages.pot')

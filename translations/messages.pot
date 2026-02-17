@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Image Optimizer 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 18:04\n"
+"POT-Creation-Date: 2026-02-17 19:14\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,100 +17,103 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.py:112
-msgid "Processing {}: {}"
-msgstr ""
-
-#: main.py:125
-msgid "Embedding metadata into {}..."
-msgstr ""
-
-#: main.py:129
-msgid "Could not embed metadata into {}: {}"
-msgstr ""
-
-#: main.py:136
-msgid "[{}] {:.1f}KB -> {:.1f}KB (Reduced {:.1f}%)"
-msgstr ""
-
-#: main.py:140
-msgid "Error {}: {}"
-msgstr ""
-
-#: main.py:145
-msgid "File processing completed."
-msgstr ""
-
-#: main.py:150
-#: __init__.py:10
-msgid "Image Optimizer"
-msgstr ""
-
-#: main.py:150
-msgid "Batch Optimize Images"
-msgstr ""
-
-#: main.py:159
-msgid "Error"
-msgstr ""
-
-#: main.py:159
-msgid "Please select at least one book!"
-msgstr ""
-
-#: main.py:176
-msgid "Optimizing: {}"
-msgstr ""
-
-#: main.py:214
-msgid "• {}: Reduced {:.1f}%"
-msgstr ""
-
-#: main.py:226
-msgid "Optimized {} books.\n\nChange details:\n{}"
-msgstr ""
-
-#: main.py:229
-msgid "Optimization Report"
-msgstr ""
-
-#: config_dialog.py:16
+#: .\config_dialog.py:13
 msgid "Image Optimization Config"
 msgstr ""
 
-#: config_dialog.py:23
+#: .\config_dialog.py:20
 msgid "Example: 1080"
 msgstr ""
 
-#: config_dialog.py:27
+#: .\config_dialog.py:24
 msgid "Example: 85"
 msgstr ""
 
-#: config_dialog.py:31
+#: .\config_dialog.py:28
+#: .\main.py:24
+#: .\optimizer.py:15
+#: .\optimizer.py:17
 msgid "Original"
 msgstr ""
 
-#: config_dialog.py:52
+#: .\config_dialog.py:49
 msgid "Max Size (px):"
 msgstr ""
 
-#: config_dialog.py:54
+#: .\config_dialog.py:51
 msgid "Compression Quality (1-100):"
 msgstr ""
 
-#: config_dialog.py:56
+#: .\config_dialog.py:53
 msgid "Format Conversion:"
 msgstr ""
 
-#: config_dialog.py:58
+#: .\config_dialog.py:55
 msgid "Keep Import Time:"
 msgstr ""
 
-#: config_dialog.py:61
+#: .\config_dialog.py:58
 msgid "Start"
 msgstr ""
 
-#: __init__.py:11
+#: .\main.py:110
+msgid "Processing {}: {}"
+msgstr ""
+
+#: .\main.py:123
+msgid "Embedding metadata into {}..."
+msgstr ""
+
+#: .\main.py:127
+msgid "Could not embed metadata into {}: {}"
+msgstr ""
+
+#: .\main.py:134
+msgid "[{}] {:.1f}KB -> {:.1f}KB (Reduced {:.1f}%)"
+msgstr ""
+
+#: .\main.py:138
+msgid "Error {}: {}"
+msgstr ""
+
+#: .\main.py:143
+msgid "File processing completed."
+msgstr ""
+
+#: .\main.py:148
+#: .\__init__.py:7
+msgid "Image Optimizer"
+msgstr ""
+
+#: .\main.py:148
+msgid "Batch Optimize Images"
+msgstr ""
+
+#: .\main.py:157
+msgid "Error"
+msgstr ""
+
+#: .\main.py:157
+msgid "Please select at least one book!"
+msgstr ""
+
+#: .\main.py:174
+msgid "Optimizing: {}"
+msgstr ""
+
+#: .\main.py:212
+msgid "• {}: Reduced {:.1f}%"
+msgstr ""
+
+#: .\main.py:224
+msgid "Optimized {} books.\n\nChange details:\n{}"
+msgstr ""
+
+#: .\main.py:227
+msgid "Optimization Report"
+msgstr ""
+
+#: .\__init__.py:8
 msgid "Batch compress and optimize images"
 msgstr ""
 
