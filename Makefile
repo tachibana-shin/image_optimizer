@@ -1,12 +1,17 @@
 .PHONY: all clean
 
-all: image_optimizer.zip
+all: translate image_optimizer.zip
 
-image_optimizer.zip: build.py __init__.py main.py optimizer.py config_dialog.py plugin-import-name-image_optimizer.txt
-	python build.py
+translate:
+	pybabel compile -i translations/en.po -o translations/en.mo
+	pybabel compile -i translations/vi.po -o translations/vi.mo
+	pybabel compile -i translations/ja.po -o translations/ja.mo
+
+image_optimizer.zip: builder/build.py __init__.py main.py optimizer.py config_dialog.py builder/plugin-import-name-image_optimizer.txt
+	python builder/build.py
 
 load:
-	calibre-customize -b .
+	clear && calibre-customize -b .
 
 dev: load
 	calibre-debug -g

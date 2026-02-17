@@ -13,18 +13,15 @@ from . import ImageOptimizerPlugin
 from .optimizer import optimize_image_logic
 from .config_dialog import ConfigDialog
 
-# prefsは現在config_dialog.pyで管理されていますが、ここで必要になるかもしれません。
-# 実際にはConfigDialogがそれを管理し、パラメータをジョブに渡します。
-# ただし、元のmain.pyの15〜21行目ではデフォルトを設定しています。デフォルトの設定を維持するか、移動する必要があります。
-# ここに置くか、config_dialogに置くのが良いでしょう。config_dialogはcalibre.utils.configからインポートするため、
-# デフォルトの処理はconfig_dialogの初期化に任せるか、ここで行うことができます。
-# プラグインのロード時に確実に設定されるように、ここでデフォルトの初期化を維持しましょう。
+from calibre.utils.localization import _
+
+load_translations()  # type: ignore
 
 from .config_dialog import prefs
 prefs.defaults.update({
     'size': '1080',
     'quality': '85',
-    'format': 'Original',
+    'format': _('Original'),
     'keep_time_import': True
 })
 
@@ -110,7 +107,7 @@ def do_single_optimization(book_id, params, db_path, book_mi, formats_data, abor
                             item_progress = item_idx / total_items
                             # 各ブックフォーマットに重みを均等に分配
                             overall_progress = (fmt_idx + item_progress) / total_fmts
-                            notifications.put((overall_progress, f"Processing {fmt}: {item.filename}"))
+                            notifications.put((overall_progress, _("Processing {}: {}").format(fmt, item.filename)))
 
                         if get_image_type(data):
                             data = optimize_image_logic(data, params)
@@ -123,32 +120,32 @@ def do_single_optimization(book_id, params, db_path, book_mi, formats_data, abor
                 # 圧縮後にメタデータを埋め込む
                 try:
                     if notifications:
-                        notifications.put(((fmt_idx + 0.9) / total_fmts, f"Embedding metadata into {fmt}..."))
+                        notifications.put(((fmt_idx + 0.9) / total_fmts, _("Embedding metadata into {}...").format(fmt)))
                     with open(temp_out, 'r+b') as f:
                         set_metadata(f, book_mi, fmt.lower())
                 except Exception as emeta:
-                    if log: log.warning(f"Could not embed metadata into {fmt}: {str(emeta)}")
+                    if log: log.warning(_("Could not embed metadata into {}: {}").format(fmt, str(emeta)))
                 
                 new_size = os.path.getsize(temp_out)
                 optimized_formats[fmt] = temp_out
 
                 if log:
                     reduction = ((old_size - new_size) / old_size) * 100 if old_size > 0 else 0
-                    log(f"[{fmt}] {old_size/1024:.1f}KB -> {new_size/1024:.1f}KB (Reduced {reduction:.1f}%)")
+                    log(_("[{}] {:.1f}KB -> {:.1f}KB (Reduced {:.1f}%)").format(fmt, old_size/1024, new_size/1024, reduction))
             
                 stats[fmt] = (old_size, new_size)
             except Exception as e:
-                if log: log.error(f"Error {fmt}: {str(e)}")
+                if log: log.error(_("Error {}: {}").format(fmt, str(e)))
                 if os.path.exists(temp_out): os.remove(temp_out)
 
     # 最後に100% (1.0) を返すことを確認
     if notifications:
-        notifications.put((1.0, "File processing completed."))
+        notifications.put((1.0, _("File processing completed.")))
         
     return book_mi, optimized_formats, stats, params.get('keep_time_import', True)
 
 class ImageOptimizerAction(InterfaceAction):
-    action_spec = ('Image Optimizer', get_icons('images/icon.png'), 'Batch Optimize Images', None)
+    action_spec = (_('Image Optimizer'), get_icons('images/icon.png'), _('Batch Optimize Images'), None)
     name = ImageOptimizerPlugin.name
 
     def genesis(self):
@@ -157,7 +154,7 @@ class ImageOptimizerAction(InterfaceAction):
 
     def ask_user(self):
         rows = self.gui.library_view.selectionModel().selectedRows()
-        if not rows: return error_dialog(self.gui, "Error", "Please select at least one book!", show=True)
+        if not rows: return error_dialog(self.gui, _("Error"), _("Please select at least one book!"), show=True)
         params = self.get_params_from_dialog()
         if not params: return
         ids = [self.gui.library_view.model().id(r) for r in rows]
@@ -174,7 +171,7 @@ class ImageOptimizerAction(InterfaceAction):
             formats_data = {f: db.format_path(book_id, f, index_is_id=True) for f in fmts}
             job = ThreadedJob(
                 type_='image_optimizer_single',
-                description=f"Optimizing: {mi.title}",
+                description=_("Optimizing: {}").format(mi.title),
                 func=do_single_optimization,
                 args=(book_id, params, db.library_path, mi, formats_data),
                 kwargs={},
@@ -212,7 +209,7 @@ class ImageOptimizerAction(InterfaceAction):
                     except: pass
                 self.new_book_ids.append(new_id)
                 reduction = ((total_old - total_new) / total_old) * 100
-                self.summary_report.append(f"• {mi.title}: Reduced {reduction:.1f}%")
+                self.summary_report.append(_("• {}: Reduced {:.1f}%").format(mi.title, reduction))
 
         if self.processed_count >= self.total_to_process:
             self.gui.library_view.model().refresh_ids(self.new_book_ids)
@@ -224,10 +221,10 @@ class ImageOptimizerAction(InterfaceAction):
         # self.gui.library_view.model().refresh_ids(self.new_book_ids)
         
         report_text = "\n".join(self.summary_report)
-        msg = f"Optimized {len(self.new_book_ids)} books.\n\nChange details:\n{report_text}"
+        msg = _("Optimized {} books.\n\nChange details:\n{}").format(len(self.new_book_ids), report_text)
         
         # 結果ダイアログを表示
-        info_dialog(self.gui, "Optimization Report", msg, show=True)
+        info_dialog(self.gui, _("Optimization Report"), msg, show=True)
 
     def get_params_from_dialog(self):
         d = ConfigDialog(self.gui)

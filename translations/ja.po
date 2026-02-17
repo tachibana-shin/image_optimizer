@@ -1,0 +1,109 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Image Optimizer 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-17 18:04\n"
+"PO-Revision-Date: 2026-02-17 18:04\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: main.py:112
+msgid "Processing {}: {}"
+msgstr "{} を処理中: {}"
+
+#: main.py:125
+msgid "Embedding metadata into {}..."
+msgstr "{} にメタデータを埋め込んでいます..."
+
+#: main.py:129
+msgid "Could not embed metadata into {}: {}"
+msgstr "{} にメタデータを埋め込めませんでした: {}"
+
+#: main.py:136
+msgid "[{}] {:.1f}KB -> {:.1f}KB (Reduced {:.1f}%)"
+msgstr "[{}] {:.1f}KB -> {:.1f}KB ({:.1f}% 削減)"
+
+#: main.py:140
+msgid "Error {}: {}"
+msgstr "エラー {}: {}"
+
+#: main.py:145
+msgid "File processing completed."
+msgstr "ファイル処理が完了しました。"
+
+#: main.py:150
+#: __init__.py:10
+msgid "Image Optimizer"
+msgstr "画像オプティマイザー"
+
+#: main.py:150
+msgid "Batch Optimize Images"
+msgstr "画像を一括最適化"
+
+#: main.py:159
+msgid "Error"
+msgstr "エラー"
+
+#: main.py:159
+msgid "Please select at least one book!"
+msgstr "少なくとも1冊の本を選択してください！"
+
+#: main.py:176
+msgid "Optimizing: {}"
+msgstr "最適化中: {}"
+
+#: main.py:214
+msgid "• {}: Reduced {:.1f}%"
+msgstr "• {}: {:.1f}% 削減"
+
+#: main.py:226
+msgid "Optimized {} books.\n\nChange details:\n{}"
+msgstr "{} 冊の本を最適化しました。\n\n変更の詳細:\n{}"
+
+#: main.py:229
+msgid "Optimization Report"
+msgstr "最適化レポート"
+
+#: config_dialog.py:16
+msgid "Image Optimization Config"
+msgstr "画像最適化設定"
+
+#: config_dialog.py:23
+msgid "Example: 1080"
+msgstr "例: 1080"
+
+#: config_dialog.py:27
+msgid "Example: 85"
+msgstr "例: 85"
+
+#: config_dialog.py:31
+msgid "Original"
+msgstr "オリジナル"
+
+#: config_dialog.py:52
+msgid "Max Size (px):"
+msgstr "最大サイズ (px):"
+
+#: config_dialog.py:54
+msgid "Compression Quality (1-100):"
+msgstr "圧縮品質 (1-100):"
+
+#: config_dialog.py:56
+msgid "Format Conversion:"
+msgstr "フォーマット変換:"
+
+#: config_dialog.py:58
+msgid "Keep Import Time:"
+msgstr "インポート時間を保持:"
+
+#: config_dialog.py:61
+msgid "Start"
+msgstr "開始"
+
+#: __init__.py:11
+msgid "Batch compress and optimize images"
+msgstr "画像を一括圧縮および最適化"

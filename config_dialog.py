@@ -1,5 +1,8 @@
 from qt.core import QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QComboBox, QCheckBox
 from calibre.utils.config import JSONConfig
+from calibre.utils.localization import _
+
+load_translations()  # type: ignore
 
 # プリファレンスの初期化（設定を共有するためにmain.pyと同じ）
 prefs = JSONConfig('plugins/image_optimizer')
@@ -7,22 +10,22 @@ prefs = JSONConfig('plugins/image_optimizer')
 class ConfigDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("Image Optimization Config")
+        self.setWindowTitle(_("Image Optimization Config"))
         self.setMinimumWidth(350)
         layout = QVBoxLayout(self)
         
         # prefs から保存された値を読み取る
         self.size_input = QLineEdit(self)
         self.size_input.setText(prefs['size'])
-        self.size_input.setPlaceholderText("Example: 1080")
+        self.size_input.setPlaceholderText(_("Example: 1080"))
         
         self.quality_input = QLineEdit(self)
         self.quality_input.setText(prefs['quality'])
-        self.quality_input.setPlaceholderText("Example: 85")
+        self.quality_input.setPlaceholderText(_("Example: 85"))
         
         self.format_input = QComboBox(self)
         self.format_input.addItems([
-            "Original",  # 元のフォーマットを維持
+            _("Original"),  # 元のフォーマットを維持
             "JPEG",      # 写真に最適
             "PNG",       # グラフィック、ロゴに最適
             "WebP",      # 優れた圧縮 (Epub 3)
@@ -43,16 +46,16 @@ class ConfigDialog(QDialog):
         if index >= 0:
             self.format_input.setCurrentIndex(index)
 
-        layout.addWidget(QLabel("Max Size (px):"))
+        layout.addWidget(QLabel(_("Max Size (px):")))
         layout.addWidget(self.size_input)
-        layout.addWidget(QLabel("Compression Quality (1-100):"))
+        layout.addWidget(QLabel(_("Compression Quality (1-100):")))
         layout.addWidget(self.quality_input)
-        layout.addWidget(QLabel("Format Conversion:"))
+        layout.addWidget(QLabel(_("Format Conversion:")))
         layout.addWidget(self.format_input)
-        layout.addWidget(QLabel("Keep Import Time:"))
+        layout.addWidget(QLabel(_("Keep Import Time:")))
         layout.addWidget(self.keep_time_import_input)
         
-        btn = QPushButton("Start", self)
+        btn = QPushButton(_("Start"), self)
         btn.clicked.connect(self.save_and_accept)
         layout.addWidget(btn)
 

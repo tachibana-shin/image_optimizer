@@ -1,8 +1,11 @@
-from calibre.customize import InterfaceActionBase, EditBookToolPlugin
+from calibre.customize import InterfaceActionBase
+from calibre.utils.localization import _
+
+load_translations()  # type: ignore
 
 class ImageOptimizerPlugin(InterfaceActionBase):
-    name                = 'Image Optimizer'
-    description         = 'Batch compress and optimize images'
+    name                = _('Image Optimizer')
+    description         = _('Batch compress and optimize images')
     supported_platforms = ['windows', 'osx', 'linux']
     author              = 'Tachibana Shin'
     version             = (1, 0, 0)

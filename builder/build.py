@@ -5,9 +5,9 @@ def create_plugin_zip():
     output_filename = 'image_optimizer.zip'
     files_to_include = [
         '__init__.py',
+        'config_dialog.py',
         'main.py',
         'optimizer.py',
-        'config_dialog.py',
         'plugin-import-name-image_optimizer.txt'
     ]
     
@@ -27,11 +27,25 @@ def create_plugin_zip():
     try:
         with zipfile.ZipFile(output_filename, 'w', zipfile.ZIP_DEFLATED) as zf:
             for f in files_to_include:
-                print(f"Adding {f}...")
-                zf.write(f)
+                arcname = f
+                if 'builder/' in f:
+                    arcname = os.path.basename(f)
+                print(f"Adding {f} as {arcname}...")
+                zf.write(f, arcname)
             
             print("Adding images/icon.png...")
             zf.write('images/icon.png')
+
+            # Add translations
+            if os.path.exists('translations'):
+                for root, dirs, files in os.walk('translations'):
+                    for file in files:
+                        if file.endswith('.mo'):
+                            file_path = os.path.join(root, file)
+                            arcname = os.path.join('translations', file)
+                            print(f"Adding {arcname}...")
+                            zf.write(file_path, arcname)
+
             
         print(f"Successfully created {output_filename}")
     except Exception as e:

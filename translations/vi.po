@@ -1,0 +1,109 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Image Optimizer 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-17 18:04\n"
+"PO-Revision-Date: 2026-02-17 18:04\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: main.py:112
+msgid "Processing {}: {}"
+msgstr "Đang xử lý {}: {}"
+
+#: main.py:125
+msgid "Embedding metadata into {}..."
+msgstr "Đang nhúng metadata vào {}..."
+
+#: main.py:129
+msgid "Could not embed metadata into {}: {}"
+msgstr "Không thể nhúng metadata vào {}: {}"
+
+#: main.py:136
+msgid "[{}] {:.1f}KB -> {:.1f}KB (Reduced {:.1f}%)"
+msgstr "[{}] {:.1f}KB -> {:.1f}KB (Giảm {:.1f}%)"
+
+#: main.py:140
+msgid "Error {}: {}"
+msgstr "Lỗi {}: {}"
+
+#: main.py:145
+msgid "File processing completed."
+msgstr "Hoàn tất xử lý tệp."
+
+#: main.py:150
+#: __init__.py:10
+msgid "Image Optimizer"
+msgstr "Tối ưu hóa ảnh"
+
+#: main.py:150
+msgid "Batch Optimize Images"
+msgstr "Tối ưu hóa ảnh hàng loạt"
+
+#: main.py:159
+msgid "Error"
+msgstr "Lỗi"
+
+#: main.py:159
+msgid "Please select at least one book!"
+msgstr "Vui lòng chọn ít nhất một cuốn sách!"
+
+#: main.py:176
+msgid "Optimizing: {}"
+msgstr "Đang tối ưu: {}"
+
+#: main.py:214
+msgid "• {}: Reduced {:.1f}%"
+msgstr "• {}: Giảm {:.1f}%"
+
+#: main.py:226
+msgid "Optimized {} books.\n\nChange details:\n{}"
+msgstr "Đã tối ưu xong {} sách.\n\nChi tiết thay đổi:\n{}"
+
+#: main.py:229
+msgid "Optimization Report"
+msgstr "Báo cáo tối ưu hóa"
+
+#: config_dialog.py:16
+msgid "Image Optimization Config"
+msgstr "Cấu hình tối ưu ảnh"
+
+#: config_dialog.py:23
+msgid "Example: 1080"
+msgstr "Ví dụ: 1080"
+
+#: config_dialog.py:27
+msgid "Example: 85"
+msgstr "Ví dụ: 85"
+
+#: config_dialog.py:31
+msgid "Original"
+msgstr "Gốc"
+
+#: config_dialog.py:52
+msgid "Max Size (px):"
+msgstr "Kích thước tối đa (px):"
+
+#: config_dialog.py:54
+msgid "Compression Quality (1-100):"
+msgstr "Chất lượng nén (1-100):"
+
+#: config_dialog.py:56
+msgid "Format Conversion:"
+msgstr "Chuyển đổi định dạng:"
+
+#: config_dialog.py:58
+msgid "Keep Import Time:"
+msgstr "Giữ nguyên thời gian import:"
+
+#: config_dialog.py:61
+msgid "Start"
+msgstr "Bắt đầu"
+
+#: __init__.py:11
+msgid "Batch compress and optimize images"
+msgstr "Nén và tối ưu ảnh hàng loạt"

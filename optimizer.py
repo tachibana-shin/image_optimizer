@@ -1,6 +1,10 @@
 import io
 from PIL import Image
 
+from calibre.utils.localization import _
+
+load_translations()  # type: ignore
+
 def optimize_image_logic(img_data, params):
     try:
         image = Image.open(io.BytesIO(img_data))
@@ -8,9 +12,9 @@ def optimize_image_logic(img_data, params):
         w, h = map(float, image.size)
 
         quality = int(params.get('quality', 100)) if params.get('quality') != '' else 100
-        encoding_type = params.get('format', 'Original')
+        encoding_type = params.get('format', _("Original"))
         
-        target_format = encoding_type if encoding_type != 'Original' else orig_format
+        target_format = encoding_type if encoding_type != _("Original") else orig_format
         if not target_format: target_format = 'JPEG' # 安全なフォールバック
 
         if params.get('size') != '':
