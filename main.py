@@ -96,9 +96,10 @@ def do_single_optimization(book_id, params, db_path, book_mi, formats_data, abor
                     for item_idx, item in enumerate(yin.infolist()):
                         # 解凍の途中でユーザーがキャンセルを押したかどうかを確認
                         if abort and abort.is_set(): break
-                        
-                        if item.filename == 'mimetype': continue
-                        
+                        # これらの特殊ファイルは処理しない（EPUB仕様やCalibre用メタ）
+                        if item.filename in ('mimetype', 'calibre_bookmarks.txt'):
+                            continue
+
                         data = yin.read(item.filename)
                         
                         # 詳細な進行状況を更新（比率 0.0 -> 1.0）

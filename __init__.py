@@ -8,5 +8,5 @@ class ImageOptimizerPlugin(InterfaceActionBase):
     description         = _('Batch compress and optimize images')
     supported_platforms = ['windows', 'osx', 'linux']
     author              = 'Tachibana Shin'
-    version             = (1, 0, 0)
+    version             = (1, 0, 1)
     actual_plugin       = 'calibre_plugins.image_optimizer.main:ImageOptimizerAction'
