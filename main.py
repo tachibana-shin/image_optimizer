@@ -97,7 +97,12 @@ def do_single_optimization(book_id, params, db_path, book_mi, formats_data, abor
                         # 解凍の途中でユーザーがキャンセルを押したかどうかを確認
                         if abort and abort.is_set(): break
                         # これらの特殊ファイルは処理しない（EPUB仕様やCalibre用メタ）
-                        if item.filename in ('mimetype', 'calibre_bookmarks.txt'):
+                        if item.filename in ('calibre_bookmarks.txt'):
+                            continue
+                        
+                        if item.filename == 'mimetype':
+                            data = yin.read(item.filename)
+                            yout.writestr(item, data, compress_type=zipfile.ZIP_STORED)
                             continue
 
                         data = yin.read(item.filename)
