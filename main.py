@@ -172,7 +172,7 @@ class ImageOptimizerAction(InterfaceAction):
         for book_id in ids:
             db = self.gui.current_db
             mi = db.get_metadata(book_id, index_is_id=True, get_cover=True)
-            mi.title = f"{mi.title} [optimized]" # Metadataオブジェクトのタイトルを変更
+            mi.title = f"{mi.title}" # Metadataオブジェクトのタイトルを変更
             fmts = [f.strip().upper() for f in (db.formats(book_id, index_is_id=True) or '').split(',') if f.strip()]
             formats_data = {f: db.format_path(book_id, f, index_is_id=True) for f in fmts}
             job = ThreadedJob(
